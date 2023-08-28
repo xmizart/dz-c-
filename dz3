@@ -1,0 +1,19 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        string name, zodiac, job;
+        int age;
+        Console.WriteLine("Введите ваше имя. ");
+        name = Console.ReadLine();
+        Console.WriteLine("Сколько вам лет? ");
+        age = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Каков ваш знак зодиака? ");
+        zodiac = Console.ReadLine();
+        Console.WriteLine("Где вы работаете? ");
+        job = Console.ReadLine();
+        Console.WriteLine($"Вас зовут {name}, вам {age} лет, вы {zodiac} и работаете {job}.");
+    }
+}
