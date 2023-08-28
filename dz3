@@ -4,7 +4,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string name, zodiac, job;
+        string name;
+        string zodiac;
+        string job;
         int age;
         Console.WriteLine("Введите ваше имя. ");
         name = Console.ReadLine();
