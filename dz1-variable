@@ -1,0 +1,11 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        float emptyVariable4, emptyVariable5;
+        double emptyVariable6;
+        string emptyVariable17, emptyVariable8;
+        char emptyVariable9;
+        bool emptyVariable10;   
+    }
+}
