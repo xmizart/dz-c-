@@ -1,0 +1,17 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        string name = "Parker";
+        string surname = "Peter";
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Surname: " + surname);
+        string emptyPole = name;
+        name = surname;
+        surname = emptyPole;
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Surname: " + surname);
+    }
+}
