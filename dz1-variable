@@ -4,7 +4,7 @@ internal class Program
     {
         int playerDamage;
         uint playerArmor;
-        int playerHealth;
+        ushort playerHealth;
         byte playerLevel;
         short enemyDamage;
         float levelProgress;
