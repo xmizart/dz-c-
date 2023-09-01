@@ -1,0 +1,12 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        for (int i = 5; i <= 96; i = i + 7)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
