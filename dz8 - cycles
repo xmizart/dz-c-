@@ -1,0 +1,17 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.WriteLine("Введите фразу:");
+        string playerMassage = Console.ReadLine();
+        Console.WriteLine("Cколько раз вы хотите её повторить?");
+        int massageCount = Convert.ToInt32(Console.ReadLine());
+        while (massageCount > 0)
+        {
+            Console.WriteLine(playerMassage);
+            massageCount--;
+        }
+    }
+}
