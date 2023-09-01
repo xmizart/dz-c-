@@ -1,0 +1,15 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.WriteLine("Введите количество золота: ");
+        int gold = Convert.ToInt32(Console.ReadLine());
+        int crystalPrice = 10;
+        Console.WriteLine($"Стоимость кристаллов: {crystalPrice}, сколько кристаллов вы хотите купить?");
+        int crystalCount = Convert.ToInt32(Console.ReadLine());
+        gold -= crystalPrice * crystalCount;
+        Console.WriteLine($"Количество купленных вами кристаллов: {crystalCount}. Остаток вашего золота: {gold}");
+    }
+}
