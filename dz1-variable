@@ -3,14 +3,14 @@ internal class Program
     private static void Main(string[] args)
     {
         int playerDamage;
-        int playerArmor;
+        uint playerArmor;
         int playerHealth;
-        int enemyHealth
-        int enemyArmor
-        int enemyDamage
+        byte playerLevel;
+        short enemyDamage;
         float levelProgress;
         string playerName;
         string characterDescription;
+        char dot;
         bool isPlayerAlive;   
     }
 }
