@@ -1,0 +1,14 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.WriteLine("Введите количество бабушек: ");
+        int  grandmaCount= Convert.ToInt32(Console.ReadLine());
+        int receiptTime = 10;
+        int waitHours = (grandmaCount * receiptTime) / 60;
+        int waitMinutes = (grandmaCount * receiptTime) % 60;
+        Console.WriteLine($"Вы должны подождать {waitHours} часа и {waitMinutes} минут.");
+    }
+}
