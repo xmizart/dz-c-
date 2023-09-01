@@ -1,0 +1,13 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int imagesCount = 52;
+        int picturesInRaw = 3;
+        int rawsCount = imagesCount / picturesInRaw;
+        int picturesCountRemaind = imagesCount % picturesInRaw;
+        Console.WriteLine($"Количество заполненных рядов: " + rawsCount + ". " + "Количество оставшихся картинок: " + picturesCountRemaind);
+    }
+}
