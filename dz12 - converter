@@ -1,0 +1,150 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const string CommandRubToUsd = "1";
+        const string CommandRubToIls = "2";
+        const string CommandUsdToRub = "3";
+        const string CommandUsdToIls = "4";
+        const string CommandIlsToRub = "5";
+        const string CommandIlsToUsd = "6";
+        const string CommandExit = "exit";
+
+        float rubInWallet;
+        float usdInWallet;
+        float ilsInWallet;
+        float rubToUsd = 0.01f;
+        float rubToIls = 0.039f;
+        float usdToRub = 96.34f;
+        float usdToIls = 3.81f;
+        float ilsToRub = 25.44f;
+        float ilsToUsd = 0.26f;
+        float exchangeCurrencyCount;
+        string desiredCommand;
+
+        Console.WriteLine("Добро пожаловать в обменник валют");
+
+        Console.Write("Введите баланс рублей: ");
+        rubInWallet = Convert.ToSingle(Console.ReadLine());
+
+        Console.Write("Введите баланс долларов: ");
+        usdInWallet = Convert.ToSingle(Console.ReadLine());
+
+        Console.Write("Введите баланс шекелей: ");
+        ilsInWallet = Convert.ToSingle(Console.ReadLine());
+
+        Console.WriteLine("Выберете необходимую операцию");
+        Console.WriteLine("1 - обменять рубли на доллары");
+        Console.WriteLine("2 - обменять рубли на шекели");
+        Console.WriteLine("3 - обменять доллары на рубли");
+        Console.WriteLine("4 - обменять доллары на шекели");
+        Console.WriteLine("5 - обменять шекели на рубли");
+        Console.WriteLine("6 - обменять шекели на доллары");
+        Console.WriteLine("exit - выйти");
+        Console.Write("Ваш выбор: ");
+        desiredCommand = Console.ReadLine();
+
+        switch (desiredCommand)
+        {
+            case CommandRubToUsd:
+                Console.WriteLine("Обмен рублей на доллары.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (rubInWallet >= exchangeCurrencyCount)
+                {
+                    rubInWallet -= exchangeCurrencyCount;
+                    usdInWallet += exchangeCurrencyCount * rubToUsd;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество рублей!");
+
+                }
+                break;
+            case CommandRubToIls:
+                Console.WriteLine("Обмен рублей на шекели.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (rubInWallet >= exchangeCurrencyCount)
+                {
+                    rubInWallet -= exchangeCurrencyCount;
+                    ilsInWallet += exchangeCurrencyCount * rubToIls;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество рублей!");
+                }
+                break;
+            case CommandUsdToRub:
+                Console.WriteLine("Обмен долларов на рубли.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (usdInWallet >= exchangeCurrencyCount)
+                {
+                    usdInWallet -= exchangeCurrencyCount;
+                    rubInWallet += exchangeCurrencyCount * usdToRub;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество долларов!");
+                }
+                break;
+            case CommandUsdToIls:
+                Console.WriteLine("Обмен долларов на шекели.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (usdInWallet >= exchangeCurrencyCount)
+                {
+                    usdInWallet -= exchangeCurrencyCount;
+                    ilsInWallet += exchangeCurrencyCount * usdToIls;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество долларов!");
+                }
+                break;
+            case CommandIlsToRub:
+                Console.WriteLine("Обмен шекелей на рубли.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (ilsInWallet >= exchangeCurrencyCount)
+                {
+                    ilsInWallet -= exchangeCurrencyCount;
+                    rubInWallet += exchangeCurrencyCount * ilsToRub;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество шекелей!");
+                }
+                break;
+            case CommandIlsToUsd:
+                Console.WriteLine("Обмен шекелей на доллары.");
+                Console.Write("Cколько вы хотите обменять? ");
+                exchangeCurrencyCount = Convert.ToSingle(Console.ReadLine());
+
+                if (ilsInWallet >= exchangeCurrencyCount)
+                {
+                    ilsInWallet -= exchangeCurrencyCount;
+                    usdInWallet += exchangeCurrencyCount * ilsToUsd;
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимое количество шекелей!");
+                }
+                break;
+            case CommandExit:
+                break;
+            default:
+                Console.WriteLine("Выбрана неверная операция!");
+                break;
+        }
+        Console.WriteLine($"Ваш баланс: {rubInWallet} рублей, {usdInWallet} долларов и {ilsInWallet} шекелей.");
+    }
+}
