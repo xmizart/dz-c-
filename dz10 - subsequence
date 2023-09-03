@@ -4,7 +4,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        for (int i = 5; i <= 96; i = i + 7)
+        int stepValue = 7;
+        int startValue = 5;
+        int maxValue = 96;
+
+        for (int i = startValue; i <= maxValue; i = i + stepValue)
         {
             Console.WriteLine(i);
         }
