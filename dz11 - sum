@@ -1,0 +1,24 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int number;
+        int minValue = 0;
+        int sum = 0;
+        Random rand = new Random();
+
+        number = rand.Next(0, 101);
+        Console.WriteLine(number);
+
+        for (int i = startValue; i <= number; i++)
+        {
+            if (i % 3 == 0 || i % 5 == 0)
+            {
+                sum += i;
+            }
+        }
+        Console.WriteLine(sum);
+    }
+}
