@@ -5,14 +5,12 @@ internal class Program
     private static void Main(string[] args)
     {
         string stopWord = "exit";
+
         Console.WriteLine("Введите стоп-слово: ");
         string playerStopWord = Console.ReadLine();
-        if (playerStopWord == stopWord)
+
+        while (playerStopWord != stopWord)
         {
-            Console.WriteLine("Ура.");
-        }
-        else
-        { 
             Console.WriteLine("Неверное стоп-слово. Введите стоп-слово:");
             playerStopWord = Console.ReadLine();
         }
