@@ -5,10 +5,14 @@ internal class Program
     private static void Main(string[] args)
     {
         Console.WriteLine("Введите количество бабушек: ");
+
         int  grandmaCount= Convert.ToInt32(Console.ReadLine());
         int receiptTime = 10;
-        int waitHours = (grandmaCount * receiptTime) / 60;
-        int waitMinutes = (grandmaCount * receiptTime) % 60;
-        Console.WriteLine($"Вы должны подождать {waitHours} часа и {waitMinutes} минут.");
+        int minutesInHour = 60;
+        int totalWaitingTime = grandmaCount * receiptTime;
+        int waitInQueueHours = (totalWaitingTime) / minutesInHour;
+        int waitInQueueMinutes = (totalWaitingTime) % minutesInHour;
+
+        Console.WriteLine($"Вы должны подождать {waitInQueueHours} часа и {waitInQueueMinutes} минут.");
     }
 }
