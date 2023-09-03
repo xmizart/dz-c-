@@ -12,7 +12,7 @@ internal class Program
         number = rand.Next(0, 101);
         Console.WriteLine(number);
 
-        for (int i = startValue; i <= number; i++)
+        for (int i = minValue; i <= number; i++)
         {
             if (i % 3 == 0 || i % 5 == 0)
             {
