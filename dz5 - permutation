@@ -6,11 +6,15 @@ internal class Program
     {
         string name = "Parker";
         string surname = "Peter";
+
         Console.WriteLine("Name: " + name);
         Console.WriteLine("Surname: " + surname);
-        string emptyPole = name;
+
+        string temporaryStorage = name;
+
         name = surname;
-        surname = emptyPole;
+        surname = temporaryStorage;
+
         Console.WriteLine("Name: " + name);
         Console.WriteLine("Surname: " + surname);
     }
