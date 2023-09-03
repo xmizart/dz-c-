@@ -5,13 +5,14 @@ internal class Program
     private static void Main(string[] args)
     {
         Console.WriteLine("Введите фразу:");
-        string playerMassage = Console.ReadLine();
+        string playerMessage = Console.ReadLine();
+
         Console.WriteLine("Cколько раз вы хотите её повторить?");
-        int massageCount = Convert.ToInt32(Console.ReadLine());
-        while (massageCount > 0)
+        int messageCount = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = messageCount; i > 0; i--)
         {
-            Console.WriteLine(playerMassage);
-            massageCount--;
+            Console.WriteLine(playerMessage);
         }
     }
 }
