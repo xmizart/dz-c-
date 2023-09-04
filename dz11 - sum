@@ -7,8 +7,8 @@ internal class Program
         int number;
         int minValue = 0;
         int maxValue = 101;
-        int multiplicityCondition1 = 3;
-        int multiplicityCondition2 = 5;
+        int divider1 = 3;
+        int divider2 = 5;
         int sum = 0;
 
         Random random = new Random();
@@ -18,7 +18,7 @@ internal class Program
 
         for (int i = minValue; i <= number; i++)
         {
-            if (i % multiplicityCondition1 == 0 || i % multiplicityCondition2 == 0)
+            if (i % divider1 == 0 || i % divider2 == 0)
             {
                 sum += i;
             }
