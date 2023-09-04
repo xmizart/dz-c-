@@ -6,19 +6,24 @@ internal class Program
     {
         int number;
         int minValue = 0;
+        int maxValue = 101;
+        int multiplicityCondition3 = 3;
+        int multiplicityCondition5 = 5;
         int sum = 0;
+
         Random rand = new Random();
 
-        number = rand.Next(0, 101);
+        number = rand.Next(minValue, maxValue);
         Console.WriteLine(number);
 
         for (int i = minValue; i <= number; i++)
         {
-            if (i % 3 == 0 || i % 5 == 0)
+            if (i % multiplicityCondition3 == 0 || i % multiplicityCondition5 == 0)
             {
                 sum += i;
             }
         }
+
         Console.WriteLine(sum);
     }
 }
