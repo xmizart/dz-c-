@@ -22,6 +22,7 @@ internal class Program
         float ilsToRub = 25.44f;
         float ilsToUsd = 0.26f;
         float exchangeCurrencyCount;
+
         string desiredCommand;
 
         Console.WriteLine("Добро пожаловать в обменник валют");
@@ -38,13 +39,14 @@ internal class Program
         while (true)
         {
             Console.WriteLine("Выберете необходимую операцию");
-            Console.WriteLine("1 - обменять рубли на доллары");
-            Console.WriteLine("2 - обменять рубли на шекели");
-            Console.WriteLine("3 - обменять доллары на рубли");
-            Console.WriteLine("4 - обменять доллары на шекели");
-            Console.WriteLine("5 - обменять шекели на рубли");
-            Console.WriteLine("6 - обменять шекели на доллары");
-            Console.WriteLine("exit - выйти");
+            Console.WriteLine($"{CommandRubToUsd} - обменять рубли на доллары");
+            Console.WriteLine($"{CommandRubToIls} - обменять рубли на шекели");
+            Console.WriteLine($"{CommandUsdToRub} - обменять доллары на рубли");
+            Console.WriteLine($"{CommandUsdToIls} - обменять доллары на шекели");
+            Console.WriteLine($"{CommandIlsToRub} - обменять шекели на рубли");
+            Console.WriteLine($"{CommandIlsToUsd} - обменять шекели на доллары");
+            Console.WriteLine($"{CommandExit} - выйти");
+
             Console.Write("Ваш выбор: ");
             desiredCommand = Console.ReadLine();
 
@@ -65,6 +67,7 @@ internal class Program
                         Console.WriteLine("Недопустимое количество рублей!");
                     }
                     break;
+
                 case CommandRubToIls:
                     Console.WriteLine("Обмен рублей на шекели.");
                     Console.Write("Cколько вы хотите обменять? ");
@@ -80,6 +83,7 @@ internal class Program
                         Console.WriteLine("Недопустимое количество рублей!");
                     }
                     break;
+
                 case CommandUsdToRub:
                     Console.WriteLine("Обмен долларов на рубли.");
                     Console.Write("Cколько вы хотите обменять? ");
@@ -95,6 +99,7 @@ internal class Program
                         Console.WriteLine("Недопустимое количество долларов!");
                     }
                     break;
+
                 case CommandUsdToIls:
                     Console.WriteLine("Обмен долларов на шекели.");
                     Console.Write("Cколько вы хотите обменять? ");
@@ -110,6 +115,7 @@ internal class Program
                         Console.WriteLine("Недопустимое количество долларов!");
                     }
                     break;
+
                 case CommandIlsToRub:
                     Console.WriteLine("Обмен шекелей на рубли.");
                     Console.Write("Cколько вы хотите обменять? ");
@@ -125,6 +131,7 @@ internal class Program
                         Console.WriteLine("Недопустимое количество шекелей!");
                     }
                     break;
+
                 case CommandIlsToUsd:
                     Console.WriteLine("Обмен шекелей на доллары.");
                     Console.Write("Cколько вы хотите обменять? ");
@@ -139,13 +146,16 @@ internal class Program
                     {
                         Console.WriteLine("Недопустимое количество шекелей!");
                     }
-                    continue;
+                    break;
+
                 case CommandExit:
                     return;
+
                 default:
                     Console.WriteLine("Выбрана неверная операция!");
                     break;
             }
+
             Console.WriteLine($"Ваш баланс: {rubInWallet} рублей, {usdInWallet} долларов и {ilsInWallet} шекелей.");
         }
     }
