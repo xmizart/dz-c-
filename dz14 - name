@@ -5,29 +5,24 @@ internal class Program
     private static void Main(string[] args)
     {
         string name;
-        string frameSymbol;
+        string nameGutter = "";
+
+        char frameSymbol;
 
         int frameSymbolCount;
-        int frameSymbolCorrector = 2;
 
         Console.WriteLine("Привет! Как тебя зовут?");
         name = Console.ReadLine();
 
-        Console.WriteLine("Супер! Введи символ для красиовй рамочки вокруг твоего имени!");
-        frameSymbol = Console.ReadLine();
+        Console.WriteLine("Супер! Введи символ для красивой рамочки вокруг твоего имени!");
+        frameSymbol = Convert.ToChar(Console.ReadLine());
 
-        frameSymbolCount = (name.Length + frameSymbolCorrector);
-
-        for (int i = 0; i < frameSymbolCount; i++)
-        {
-            Console.Write(frameSymbol);
-        }
-
-        Console.WriteLine($"\n{frameSymbol}{name}{frameSymbol}");
+        frameSymbolCount = (name.Length + 2);
 
         for (int i = 0; i < frameSymbolCount; i++)
         {
-            Console.Write(frameSymbol);
+            nameGutter += frameSymbol;
         }
+        Console.WriteLine($"{nameGutter}\n{frameSymbol}{name}{frameSymbol}\n{nameGutter}");
     }
 }
