@@ -1,0 +1,76 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const string CommandSetName = "SetName";
+        const string CommandChooseClass = "ChooseClass";
+        const string CommandChooseTheif = "1";
+        const string CommandChooseMage = "2";
+        const string CommandChooseWarrior = "3";
+        const string CommandShowCharacterInfo = "Info";
+        const string CommandExit = "exit";
+
+        string desiredCommand;
+        string desiredClass;
+        string characterName = "Имя не назначено ";
+        string characterClass = "Класс не выбран ";
+
+        while (true)
+        {
+            Console.WriteLine("Выберете желаемое действие");
+            Console.WriteLine($"{CommandSetName} - Ввести имя героя");
+            Console.WriteLine($"{CommandChooseClass} - Выбрать класс героя");
+            Console.WriteLine($"{CommandShowCharacterInfo} - показать информацию о герое");
+            Console.WriteLine($"{CommandExit} - выйти");
+
+            Console.Write("Ваш выбор: ");
+            desiredCommand = Console.ReadLine();
+
+            switch (desiredCommand)
+            {
+                case CommandSetName:
+                    Console.Write("Введите имя вашего героя: ");
+                    characterName = Console.ReadLine();
+                    break;
+
+                case CommandChooseClass:
+                    Console.WriteLine($"{CommandChooseTheif} - Выбрать класс Вор");
+                    Console.WriteLine($"{CommandChooseMage} - Выбрать класс Маг");
+                    Console.WriteLine($"{CommandChooseWarrior} - Выбрать класс Воин");
+                    Console.Write("Ваш выбор: ");
+                    desiredClass = Console.ReadLine();
+
+                    switch (desiredClass)
+                    {
+                        case CommandChooseTheif:
+                            Console.WriteLine("Выбранный класс: Вор");
+                            characterClass = "Вор";
+                            break;
+
+                        case CommandChooseMage:
+                            Console.WriteLine("Выбранный класс: Маг");
+                            characterClass = "Маг";
+                            break;
+
+                        case CommandChooseWarrior:
+                            Console.WriteLine("Выбранный класс: Воин");
+                            characterClass = "Воин";
+                            break;
+                    }
+                    break;
+
+                case CommandShowCharacterInfo:
+                    Console.WriteLine($"Имя вашего героя: {characterName}, выбранный класс героя: {characterClass}");
+                    break;
+                case CommandExit:
+                    return;
+
+                default:
+                    Console.WriteLine("Такой комманды не существует.");
+                    break;
+            }
+        }
+    }
+}
