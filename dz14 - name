@@ -12,8 +12,10 @@ internal class Program
 
         Console.WriteLine("Привет! Как тебя зовут?");
         name = Console.ReadLine();
+
         Console.WriteLine("Супер! Введи символ для красиовй рамочки вокруг твоего имени!");
         frameSymbol = Console.ReadLine();
+
         frameSymbolCount = (name.Length + frameSymbolCorrector);
 
         for (int i = 0; i < frameSymbolCount; i++)
