@@ -8,18 +8,24 @@ internal class Program
         const int TopLimiter = 1000;
 
         Random random = new Random();
-        int number = random.Next(0, 28);
+
+        int minNumber = 0;
+        int maxNumber = 28;
+        int number = random.Next(minNumber, maxNumber);
         int dividentsCount = 0;
         int sum = 0;
 
-        while (sum < BottomLimiter)
+        for (int i = 0; sum < TopLimiter; i++)
         {
-            sum += number;
-        }
-        while (sum < TopLimiter)
-        {
-            sum += number;
-            dividentsCount++;
+            if (sum < BottomLimiter)
+            {
+                sum += number;
+            }
+            else
+            {
+                sum += number;
+                dividentsCount++;
+            }
         }
 
         Console.WriteLine($"Количество чисел кратных {number} равно: {dividentsCount}");
