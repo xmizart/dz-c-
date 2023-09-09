@@ -17,7 +17,9 @@ internal class Program
         string characterName = "Имя не назначено ";
         string characterClass = "Класс не выбран ";
 
-        while (true)
+        bool isExitChoosen = false;
+
+        while (isExitChoosen == false)
         {
             Console.WriteLine("Выберете желаемое действие");
             Console.WriteLine($"{CommandSetName} - Ввести имя героя");
@@ -64,8 +66,10 @@ internal class Program
                 case CommandShowCharacterInfo:
                     Console.WriteLine($"Имя вашего героя: {characterName}, выбранный класс героя: {characterClass}");
                     break;
+
                 case CommandExit:
-                    return;
+                    isExitChoosen = true;
+                    break;
 
                 default:
                     Console.WriteLine("Такой комманды не существует.");
