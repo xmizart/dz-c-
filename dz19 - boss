@@ -11,7 +11,8 @@ internal class Program
 
         int bossHealth = 150;
         int bossDamage = 60;
-        int playerHealth = 150;
+        int playerMaxHealth = 150;
+        int playerHealth = playerMaxHealth;
         int playerWeakAttackDamage = 30;
         int playerWeakAttackCost = 15;
         int playerAfterWeakAttackDamage = 50;
@@ -23,19 +24,12 @@ internal class Program
         bool isPlayerWeakAttackDone = false;
         bool isBossCanAttack = false;
         bool isPlayerSheildAttackDone = false;
-        bool isBattleEnd = false;
 
-        while (isBattleEnd == false)
+        while (playerHealth > 0 && bossHealth > 0)
         {
             if (isBossCanAttack == true)
             {
                 playerHealth -= bossDamage;
-            }
-
-            if (playerHealth <= 0 || bossHealth <= 0)
-            {
-                isBattleEnd = true;
-                break;
             }
 
             Console.WriteLine($"Вы сражаетесь с боссом! Ваше здоровье: {playerHealth}. Здоровье босса: {bossHealth}");
@@ -47,6 +41,7 @@ internal class Program
 
             Console.Write("Ваш выбор: ");
             desiredCommand = Console.ReadLine();
+            Console.Clear();
 
             switch (desiredCommand)
             {
@@ -89,31 +84,32 @@ internal class Program
                     playerHealth += playerHealingAmount;
                     isBossCanAttack = true;
 
-                    if (playerHealth > 150)
+                    if (playerHealth > playerMaxHealth)
                     {
-                        playerHealth = 150;
+                        playerHealth = playerMaxHealth;
                     }
                     break;
 
                 default:
                     Console.WriteLine("Введена неверная комманда.");
+                    isBossCanAttack = false;
                     break;
             }
-
-            Console.Clear();
         }
+
+        Console.Clear();
 
         if (bossHealth <= 0 & playerHealth <= 0)
         {
             Console.WriteLine("Вы с боссом убили друг друга.");
         }
 
-        if (bossHealth <= 0 & playerHealth > 0)
+        else if (bossHealth <= 0 & playerHealth > 0)
         {
             Console.WriteLine("Вы победили босса! Ура!");
         }
 
-        if (bossHealth > 0 & playerHealth <= 0)
+        else
         {
             Console.WriteLine("Босс вас избил...");
         }
