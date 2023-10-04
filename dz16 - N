@@ -6,26 +6,26 @@ internal class Program
     {
         const int BottomLimiter = 99;
         const int TopLimiter = 1000;
+        const int MinNumber = 0;
+        const int MaxNumber = 28;
 
         Random random = new Random();
 
-        int minNumber = 0;
-        int maxNumber = 28;
-        int number = random.Next(minNumber, maxNumber);
-        int dividentsCount = 0;
+        int number = random.Next(MinNumber, MaxNumber);
+        int dividentsCount;
         int sum = 0;
 
-        for (int i = 0; sum < TopLimiter; i++)
+        for (dividentsCount = 0; sum < TopLimiter;)
         {
             if (sum < BottomLimiter)
             {
                 sum += number;
+
+                continue;
             }
-            else
-            {
-                sum += number;
-                dividentsCount++;
-            }
+
+            sum += number;
+            dividentsCount++;
         }
 
         Console.WriteLine($"Количество чисел кратных {number} равно: {dividentsCount}");
