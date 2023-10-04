@@ -1,0 +1,116 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const string CommandPlayerAttack1 = "1";
+        const string CommandPlayerAttack2 = "2";
+        const string CommandPlayerAttack3 = "3";
+        const string CommandPlayerHealing = "4";
+
+        int bossHealth = 150;
+        int bossDamage = 60;
+        int playerHealth = 150;
+        int playerAttack1Damage = 30;
+        int playerAttack1Cost = 15;
+        int playerAttack2Damage = 50;
+        int playerAttack3Damage = 20;
+        int playerHealingAmount = 90;
+
+        string desiredCommand;
+
+        bool isPlayerAttack1Done = false;
+        bool isBossCanAttack = false;
+        bool isBattleEnd = false;
+        bool isPlayerAttack3Done = false;
+
+        while (isBattleEnd == false)
+        {
+            if (isBossCanAttack == true)
+            {
+                playerHealth -= bossDamage;
+            }
+
+            if (bossHealth <= 0 & playerHealth <= 0)
+            {
+                Console.WriteLine("Вы с боссом убили друг друга.");
+                isBattleEnd = true;
+                break;
+            }
+
+            if (bossHealth <= 0 & playerHealth > 0)
+            {
+                Console.WriteLine("Вы победили босса! Ура!");
+                isBattleEnd = true;
+                break;
+            }
+
+            if (bossHealth > 0 & playerHealth <= 0)
+            {
+                Console.WriteLine("Босс вас избил...");
+                isBattleEnd = true;
+                break;
+            }
+
+            Console.WriteLine($"Вы сражаетесь с боссом! Ваше здоровье: {playerHealth}. Здоровье босса: {bossHealth}");
+            Console.WriteLine("Выберете действие");
+            Console.WriteLine($"{CommandPlayerAttack1} - Неумелый удар. Нанести боссу {playerAttack1Damage} урона, но отхватить {playerAttack1Cost} урона по себе");
+            Console.WriteLine($"{CommandPlayerAttack2} - Работа над ошибками. Нанести боссу {playerAttack2Damage} урона (можно выполнить только после Неумелого удара)");
+            Console.WriteLine($"{CommandPlayerAttack3} - Удар щитом. Вы наносите боссу {playerAttack3Damage} урона и блокируете следующую атаку босса. (Щит одноразовый)");
+            Console.WriteLine($"{CommandPlayerHealing} - Позвать маму. Мама дует на ранку и восстанавливает вам {playerHealingAmount} здоровья");
+
+            Console.Write("Ваш выбор: ");
+            desiredCommand = Console.ReadLine();
+
+            switch (desiredCommand)
+            {
+                case CommandPlayerAttack1:
+                    bossHealth -= playerAttack1Damage;
+                    playerHealth -= playerAttack1Cost;
+                    isPlayerAttack1Done = true;
+                    isBossCanAttack = true;
+                    break;
+
+                case CommandPlayerAttack2:
+
+                    if (isPlayerAttack1Done == true)
+                    {
+                        bossHealth -= playerAttack2Damage;
+                        isPlayerAttack1Done = false;
+                        isBossCanAttack = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Тот, кто не ошибается - Работу над ошибками не делает. Выберете другое дествие!");
+                        isBossCanAttack = false;
+                    }
+                    break;
+
+                case CommandPlayerAttack3:
+
+                    if (isPlayerAttack3Done == false)
+                    {
+                        bossHealth -= playerAttack3Damage;
+                        isBossCanAttack = false;
+                        isPlayerAttack3Done = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Щит сломан! Выберете другое действие!");
+                        isBossCanAttack = false;
+                    }
+                    break;
+
+                case CommandPlayerHealing:
+                    playerHealth += playerHealingAmount;
+                    isBossCanAttack = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Введена неверная комманда.");
+                    break;
+            }
+        }
+    }
+}
