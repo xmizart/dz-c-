@@ -1,0 +1,22 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const int DegreeBase = 2;
+
+        Random random = new Random();
+
+        int number = random.Next();
+        int exponent;
+        int degreeResult = 1;
+
+        for (exponent = 0; degreeResult <= number; exponent++)
+        {
+            degreeResult *= DegreeBase;
+        }
+
+        Console.WriteLine($"Заданное число: {number}, степень {exponent}, искомое число в степени: {degreeResult}");
+    }
+}
