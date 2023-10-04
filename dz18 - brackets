@@ -1,0 +1,43 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        string brackets = "(()(()))";
+
+        int maxDepth = 0;
+        int currentDepth = 0;
+        int openBracketsCount = 0;
+        int closeBraketsCount = 0;
+
+        foreach (char simbol in brackets)
+        {
+            if (simbol == '(')
+            {
+                currentDepth++;
+                openBracketsCount++;
+
+                if (maxDepth < currentDepth)
+                {
+                    maxDepth = currentDepth;
+                }
+            }
+
+            else if (simbol == ')')
+            {
+                currentDepth--;
+                closeBraketsCount++;
+            }
+        }
+
+        if (openBracketsCount == closeBraketsCount)
+        {
+            Console.WriteLine($"Исходная строка: {brackets},максимальный уровень глубины скобок: {maxDepth}");
+        }
+        else
+        {
+            Console.WriteLine("Некоректное скобочное выражение");
+        }
+    }
+}
