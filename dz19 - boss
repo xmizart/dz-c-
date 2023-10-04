@@ -27,10 +27,6 @@ internal class Program
 
         while (playerHealth > 0 && bossHealth > 0)
         {
-            if (isBossCanAttack == true)
-            {
-                playerHealth -= bossDamage;
-            }
 
             Console.WriteLine($"Вы сражаетесь с боссом! Ваше здоровье: {playerHealth}. Здоровье босса: {bossHealth}");
             Console.WriteLine("Выберете действие");
@@ -94,6 +90,11 @@ internal class Program
                     Console.WriteLine("Введена неверная комманда.");
                     isBossCanAttack = false;
                     break;
+            }
+
+            if (isBossCanAttack == true)
+            {
+                playerHealth -= bossDamage;
             }
         }
 
