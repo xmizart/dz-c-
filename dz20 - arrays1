@@ -1,0 +1,31 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int firstColomnMultiply = 1;
+        int secondStringElementSum = 0;
+        int[,] array = new int[3, 3]
+        {
+            {1, 5, 3 },
+            {3, 2, 1 },
+            {4, 5, 6 }
+        };
+
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+
+            Console.WriteLine();
+            firstColomnMultiply *= array[i, 0];
+            secondStringElementSum += array[1, i];
+        }
+
+        Console.WriteLine("Произведение значений первого столбца: " + firstColomnMultiply);
+        Console.WriteLine("Сумма значений второй стрки: " + secondStringElementSum);
+    }
+}
