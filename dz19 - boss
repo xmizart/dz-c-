@@ -104,12 +104,10 @@ internal class Program
         {
             Console.WriteLine("Вы с боссом убили друг друга.");
         }
-
         else if (bossHealth <= 0 & playerHealth > 0)
         {
             Console.WriteLine("Вы победили босса! Ура!");
         }
-
         else
         {
             Console.WriteLine("Босс вас избил...");
