@@ -1,0 +1,47 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const int MaxNumber = 10;
+        const int MinNumber = 1;
+
+        int[,] array = new int[10, 10];
+        int maxElement = MaxNumber - 1;
+
+        Random random = new Random();
+
+        Console.WriteLine("Исходная матрица:");
+
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                array[i, j] = random.Next(MinNumber, MaxNumber);
+                Console.Write(array[i, j] + " ");
+
+                if (maxElement <= array[i, j])
+                {
+                    maxElement = array[i, j];
+                    array[i, j] = 0;
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        Console.WriteLine($"\nМаксимальный элемент матрицы: {maxElement}\n");
+        Console.WriteLine("Измененная матрица:");
+
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
