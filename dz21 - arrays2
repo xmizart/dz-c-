@@ -4,11 +4,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        const int MaxNumber = 10;
-        const int MinNumber = 1;
-
+        int maxNumber = 10;
+        int minNumber = 1;
         int[,] array = new int[10, 10];
-        int maxElement = MaxNumber - 1;
+        int maxElement = 0;
+        int newNumber = 0;
 
         Random random = new Random();
 
@@ -18,18 +18,28 @@ internal class Program
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-                array[i, j] = random.Next(MinNumber, MaxNumber);
+                array[i, j] = random.Next(minNumber, maxNumber);
                 Console.Write(array[i, j] + " ");
 
                 if (maxElement <= array[i, j])
                 {
                     maxElement = array[i, j];
-                    array[i, j] = 0;
                 }
             }
 
             Console.WriteLine();
         }
+
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                if (maxElement == array[i, j])
+                {
+                    array[i, j] = newNumber;
+                }
+            }
+        }   
 
         Console.WriteLine($"\nМаксимальный элемент матрицы: {maxElement}\n");
         Console.WriteLine("Измененная матрица:");
