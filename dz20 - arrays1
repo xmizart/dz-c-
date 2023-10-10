@@ -4,8 +4,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int firstColomnMultiply = 1;
-        int secondStringElementSum = 0;
+        int colomnMultiply = 1;
+        int stringElementSum = 0;
+        int stringNumber = 1;
+        int colomnNumber = 0;
+
         int[,] array = new int[3, 3]
         {
             {1, 5, 3 },
@@ -21,11 +24,19 @@ internal class Program
             }
 
             Console.WriteLine();
-            firstColomnMultiply *= array[i, 0];
-            secondStringElementSum += array[1, i];
         }
 
-        Console.WriteLine("Произведение значений первого столбца: " + firstColomnMultiply);
-        Console.WriteLine("Сумма значений второй стрки: " + secondStringElementSum);
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            stringElementSum += array[stringNumber, i];
+        }
+
+        for (int i = 0; i < array.GetLength(1); i++)
+        {
+            colomnMultiply *= array[i, colomnNumber];
+        }
+
+        Console.WriteLine("Произведение значений первого столбца: " + colomnMultiply);
+        Console.WriteLine("Сумма значений второй стрки: " + stringElementSum);
     }
 }
