@@ -1,0 +1,44 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const int MaxNumber = 10;
+        const int MinNumber = 1;
+        const int ArraySize = 30;
+
+        int lastElement = ArraySize - 1;
+        int[] array = new int[ArraySize];
+
+        Random random = new Random();
+
+        Console.WriteLine("Исходная матрица:");
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = random.Next(MinNumber, MaxNumber);
+            Console.Write(array[i] + " ");
+        }
+
+        Console.WriteLine("\nЛокальные максимумы: ");
+
+        if (array[0] > array[1])
+        {
+            Console.Write(Convert.ToInt32(array[0]) + " ");
+        }
+
+        for (int i = 1; i < (array.Length - 1); i++)
+        {
+            if (array[i - 1] < array[i] && array[i + 1] < array[i])
+            {
+                Console.Write(Convert.ToInt32(array[i]) + " ");
+            }
+        }
+
+        if (array[lastElement] > array[lastElement - 1])
+        {
+            Console.Write(Convert.ToInt32(array[lastElement]) + " ");
+        }
+    }
+}
