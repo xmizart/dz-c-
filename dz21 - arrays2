@@ -7,8 +7,8 @@ internal class Program
         int maxNumber = 10;
         int minNumber = 1;
         int[,] array = new int[10, 10];
-        int maxElement = 0;
-        int newNumber = 0;
+        int maxElement = int.MinValue;
+        int overwriteValue = 0;
 
         Random random = new Random();
 
@@ -21,7 +21,7 @@ internal class Program
                 array[i, j] = random.Next(minNumber, maxNumber);
                 Console.Write(array[i, j] + " ");
 
-                if (maxElement <= array[i, j])
+                if (maxElement < array[i, j])
                 {
                     maxElement = array[i, j];
                 }
@@ -36,10 +36,10 @@ internal class Program
             {
                 if (maxElement == array[i, j])
                 {
-                    array[i, j] = newNumber;
+                    array[i, j] = overwriteValue;
                 }
             }
-        }   
+        }
 
         Console.WriteLine($"\nМаксимальный элемент матрицы: {maxElement}\n");
         Console.WriteLine("Измененная матрица:");
