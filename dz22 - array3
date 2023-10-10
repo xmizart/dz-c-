@@ -4,12 +4,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        const int MaxNumber = 10;
-        const int MinNumber = 1;
-        const int ArraySize = 30;
+        int maxNumber = 10;
+        int minNumber = 1;
+        int arraySize = 30;
 
-        int lastElement = ArraySize - 1;
-        int[] array = new int[ArraySize];
+        int lastElement = arraySize - 1;
+        int[] array = new int[arraySize];
 
         Random random = new Random();
 
@@ -17,7 +17,7 @@ internal class Program
 
         for (int i = 0; i < array.Length; i++)
         {
-            array[i] = random.Next(MinNumber, MaxNumber);
+            array[i] = random.Next(minNumber, maxNumber);
             Console.Write(array[i] + " ");
         }
 
@@ -25,20 +25,20 @@ internal class Program
 
         if (array[0] > array[1])
         {
-            Console.Write(Convert.ToInt32(array[0]) + " ");
+            Console.Write(array[0] + " ");
         }
 
         for (int i = 1; i < (array.Length - 1); i++)
         {
             if (array[i - 1] < array[i] && array[i + 1] < array[i])
             {
-                Console.Write(Convert.ToInt32(array[i]) + " ");
+                Console.Write(array[i] + " ");
             }
         }
 
         if (array[lastElement] > array[lastElement - 1])
         {
-            Console.Write(Convert.ToInt32(array[lastElement]) + " ");
+            Console.Write(array[lastElement] + " ");
         }
     }
 }
