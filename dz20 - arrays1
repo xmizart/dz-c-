@@ -26,12 +26,12 @@ internal class Program
             Console.WriteLine();
         }
 
-        for (int i = 0; i < array.GetLength(0); i++)
+        for (int i = 0; i < array.GetLength(1); i++)
         {
             stringElementSum += array[stringNumber, i];
         }
 
-        for (int i = 0; i < array.GetLength(1); i++)
+        for (int i = 0; i < array.GetLength(0); i++)
         {
             colomnMultiply *= array[i, colomnNumber];
         }
