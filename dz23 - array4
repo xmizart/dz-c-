@@ -5,7 +5,7 @@ internal class Program
     private static void Main(string[] args)
     {
         int sum = 0;
-
+        int[] array = new int[1];
         string userEnteredData;
         string CommandExit = "exit";
         string CommandSum = "sum";
@@ -17,28 +17,26 @@ internal class Program
             Console.WriteLine("Чтобы добавить число в массив - введите число \nЧтобы узнать сумму введенных Вами чисел - введите sum \nЧтобы выйти - введите exit");
             userEnteredData = Console.ReadLine();
 
-            int[] array = new int[1];
-            array[0] = 0;
-            int[] tempArray = new int[array.Length + 1];
-
             if (userEnteredData != CommandSum && userEnteredData != CommandExit)
             {
-                for (int i = 0; i < array.Length - 1; i++)
+                int[] tempArray = new int[array.Length + 1];
+
+                for (int i = 0; i < array.Length; i++)
                 {
                     tempArray[i] = array[i];
                 }
 
                 tempArray[tempArray.Length - 1] = Convert.ToInt32(userEnteredData);
                 array = tempArray;
-
+            }
+            else if (userEnteredData == CommandSum)
+            {
                 for (int i = 0; i < array.Length; i++)
                 {
                     sum += array[i];
                 }
-            }
-            else if (userEnteredData == CommandSum)
-            {
                 Console.WriteLine($"Сумма введенных чисел: {sum} ");
+                sum = 0;
             }
             else if (userEnteredData == CommandExit)
             {
