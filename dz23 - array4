@@ -4,13 +4,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int[] array = new int[1];
-        array[0] = 0;
-        int[] tempArray = new int[array.Length + 1];
         int sum = 0;
 
-
         string userEnteredData;
+        string CommandExit = "exit";
+        string CommandSum = "sum";
+
         bool isExitChosen = false;
 
         while (isExitChosen == false)
@@ -18,9 +17,12 @@ internal class Program
             Console.WriteLine("Чтобы добавить число в массив - введите число \nЧтобы узнать сумму введенных Вами чисел - введите sum \nЧтобы выйти - введите exit");
             userEnteredData = Console.ReadLine();
 
-            if (userEnteredData != "sum" && userEnteredData != "exit")
-            {
+            int[] array = new int[1];
+            array[0] = 0;
+            int[] tempArray = new int[array.Length + 1];
 
+            if (userEnteredData != CommandSum && userEnteredData != CommandExit)
+            {
                 for (int i = 0; i < array.Length - 1; i++)
                 {
                     tempArray[i] = array[i];
@@ -28,20 +30,17 @@ internal class Program
 
                 tempArray[tempArray.Length - 1] = Convert.ToInt32(userEnteredData);
                 array = tempArray;
-              
-            }
-            else if (userEnteredData == "sum")
-            {
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     sum += array[i];
                 }
-                Console.WriteLine($"Сумма введенных чисел: {sum} ");
-
             }
-
-
-            else if (userEnteredData == "exit")
+            else if (userEnteredData == CommandSum)
+            {
+                Console.WriteLine($"Сумма введенных чисел: {sum} ");
+            }
+            else if (userEnteredData == CommandExit)
             {
                 isExitChosen = true;
             }
