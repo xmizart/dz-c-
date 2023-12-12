@@ -35,6 +35,7 @@ internal class Program
                 {
                     sum += array[i];
                 }
+
                 Console.WriteLine($"Сумма введенных чисел: {sum} ");
                 sum = 0;
             }
