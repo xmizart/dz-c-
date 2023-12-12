@@ -6,6 +6,7 @@ internal class Program
     {
         int sum = 0;
         int[] array = new int[1];
+
         string userEnteredData;
         string CommandExit = "exit";
         string CommandSum = "sum";
