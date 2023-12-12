@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int maxNumber = 10;
+        int minNumber = 1;
+        int arraySize = 10;
+        int overwriteVlaue;
+
+        int[] array = new int[arraySize];
+
+        Random random = new Random();
+
+        Console.WriteLine("Исходная матрица:");
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = random.Next(minNumber, maxNumber);
+            Console.Write(array[i] + " ");
+        }
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            for (int j = i + 1; j < array.Length; j++)
+            {
+                if (array[i] > array[j])
+                {
+                    overwriteVlaue = array[j];
+                    array[j] = array[i];
+                    array[i] = overwriteVlaue;
+                }
+            }
+        }
+
+        Console.WriteLine("\nОтсортированная матрица:");
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            Console.Write(array[i] + " ");
+        }
+    }
+}
