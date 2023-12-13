@@ -41,7 +41,7 @@ internal class Program
             }
         }
 
-        Console.WriteLine("\nЧаще всех повторяется: " + finalRepeatingNumber);
-        Console.WriteLine("Количество повторений: " + (maxRepetitionsCount + 1));
+        Console.WriteLine($"\nЧаще всех повторяется: {finalRepeatingNumber} \nКоличество повторений: {(maxRepetitionsCount + 1)}");
+        Console.ReadKey();
     }
 }
