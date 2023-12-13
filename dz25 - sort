@@ -8,7 +8,7 @@ internal class Program
         int maxNumber = 10;
         int minNumber = 1;
         int arraySize = 10;
-        int overwriteVlaue;
+        int tmp;
 
         int[] array = new int[arraySize];
 
@@ -28,9 +28,9 @@ internal class Program
             {
                 if (array[i] > array[j])
                 {
-                    overwriteVlaue = array[j];
+                    tmp = array[j];
                     array[j] = array[i];
-                    array[i] = overwriteVlaue;
+                    array[i] = tmp;
                 }
             }
         }
