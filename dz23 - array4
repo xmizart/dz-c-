@@ -4,35 +4,35 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int sum = 0;
         int[] array = new int[0];
 
         string userEnteredData;
-        string CommandExit = "exit";
-        string CommandSum = "sum";
+        string commandExit = "exit";
+        string commandSum = "sum";
 
         bool isExitChosen = false;
 
         while (isExitChosen == false)
         {
-            Console.WriteLine("Чтобы добавить число в массив - введите число \nЧтобы узнать сумму введенных Вами чисел - введите sum \nЧтобы выйти - введите exit");
+            Console.WriteLine($"Чтобы добавить число в массив - введите число \nЧтобы узнать сумму введенных Вами чисел - введите {commandSum} \nЧтобы выйти - введите {commandExit}");
             userEnteredData = Console.ReadLine();
 
-            if (userEnteredData == CommandSum)
+            if (userEnteredData == commandSum)
             {
+                int sum = 0;
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     sum += array[i];
                 }
 
                 Console.WriteLine($"Сумма введенных чисел: {sum} ");
-                sum = 0;
             }
-            else if (userEnteredData == CommandExit)
+            else if (userEnteredData == commandExit)
             {
                 isExitChosen = true;
             }
-            else if (userEnteredData != CommandSum && userEnteredData != CommandExit)
+            else
             {
                 int[] tempArray = new int[array.Length + 1];
 
