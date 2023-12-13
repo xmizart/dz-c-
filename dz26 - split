@@ -7,10 +7,12 @@ internal class Program
     {
         string line = "Привет! Меня зовут Артем.";
         string[] words = line.Split(' ');
+
         foreach(var word in words)
         {
             Console.WriteLine(word);
         }
+
         Console.ReadKey();
     }
 }
