@@ -7,7 +7,7 @@ internal class Program
         int maxNumber = 3;
         int minNumber = 1;
         int arraySize = 30;
-        int repetitionsCount = 0;
+        int repetitionsCount = 1;
         int maxRepetitionsCount = 0;
         int repeatingNumber = 0;
         int finalRepeatingNumber = 0;
@@ -32,8 +32,9 @@ internal class Program
             }
             else
             {
-                repetitionsCount = 0;
+                repetitionsCount = 1;
             }
+
             if (maxRepetitionsCount < repetitionsCount)
             {
                 maxRepetitionsCount = repetitionsCount;
@@ -41,7 +42,7 @@ internal class Program
             }
         }
 
-        Console.WriteLine($"\nЧаще всех повторяется: {finalRepeatingNumber} \nКоличество повторений: {(maxRepetitionsCount + 1)}");
+        Console.WriteLine($"\nЧаще всех повторяется: {finalRepeatingNumber} \nКоличество повторений: {maxRepetitionsCount}");
         Console.ReadKey();
     }
 }
