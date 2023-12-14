@@ -13,11 +13,13 @@ internal class Program
         {
             Console.Write(array[i] + " ");
         }
-
+      
         Console.WriteLine("\nВведите шаг смещения влево: ");
         shiftStep = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = 0; i < shiftStep; i++)
+        int shiftsNumber = shiftStep % array.Length;
+
+        for (int i = 0; i < shiftsNumber; i++)
         {
             int firstElement = array[0];
 
