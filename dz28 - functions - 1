@@ -95,12 +95,12 @@ internal class Program
     private static void DeleteData(ref string[] names, ref string[] jobTitles)
     {
         Console.Write("Введите номер досье :");
-        int positionAtList = Convert.ToInt32(Console.ReadLine());
+        int positionToDelite = Convert.ToInt32(Console.ReadLine());
 
-        if (positionAtList > 0 && positionAtList <= names.Length)
+        if (positionToDelite > 0 && positionToDelite <= names.Length)
         {
-            names = DecreaseArray(names, positionAtList);
-            jobTitles = DecreaseArray(jobTitles, positionAtList);
+            names = DecreaseArray(names, positionToDelite);
+            jobTitles = DecreaseArray(jobTitles, positionToDelite);
             Console.WriteLine($"Досье удалено.");
         }
         else
@@ -109,16 +109,16 @@ internal class Program
         }
     }
 
-    private static string[] DecreaseArray(string[] array, int positionAtList)
+    private static string[] DecreaseArray(string[] array, int positionToDelite)
     {
         string[] tempArray = new string[array.Length - 1];
 
-        for (int i = 0; i < positionAtList - 1; i++)
+        for (int i = 0; i < positionToDelite - 1; i++)
         {
             tempArray[i] = array[i];
         }
 
-        for (int i = positionAtList - 1; i < array.Length - 1; i++)
+        for (int i = positionToDelite - 1; i < array.Length - 1; i++)
         {
             tempArray[i] = array[i + 1];
         }
