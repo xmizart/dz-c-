@@ -1,0 +1,143 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const string CommandAddData = "1";
+        const string CommandShowAllData = "2";
+        const string CommandDeleteData = "3";
+        const string CommandFindBySurname = "4";
+        const string CommandExit = "5";
+
+        string desiredCommand;
+        string[] names = new string[0];
+        string[] jobTitles = new string[0];
+
+        int positionAtList = 1;
+
+        bool isExitChoosen = false;
+
+        while (isExitChoosen == false)
+        {
+
+            Console.WriteLine("Выберете желаемое действие");
+            Console.WriteLine($"{CommandAddData} - Добавить досье");
+            Console.WriteLine($"{CommandShowAllData} - Показать все имеющиеся досье");
+            Console.WriteLine($"{CommandDeleteData} - Удалить досье");
+            Console.WriteLine($"{CommandFindBySurname} - Найти досье по Фамилии");
+            Console.WriteLine($"{CommandExit} - выйти");
+
+            Console.Write("Ваш выбор: ");
+            desiredCommand = Console.ReadLine();
+
+            switch (desiredCommand)
+            {
+                case CommandAddData:
+                    Console.WriteLine("Введите ФИО сотрудника");
+                    string name = Console.ReadLine();
+
+                    Console.WriteLine("Введите должность сотрудника");
+                    string job = Console.ReadLine();
+
+                    names = AddData(names, name);
+                    jobTitles = AddData(jobTitles, job);
+                    break;
+
+                case CommandShowAllData:
+                    ShowAllData(ref positionAtList, jobTitles, names);
+                    break;
+
+                case CommandDeleteData:
+                    Console.Write("Введите номер досье :");
+                    positionAtList = Convert.ToInt32(Console.ReadLine());
+
+                    if (positionAtList > 0 && positionAtList <= names.Length)
+                    {
+
+                        names = DeleteData(names, ref positionAtList);
+                        jobTitles = DeleteData(jobTitles, ref positionAtList);
+                        Console.WriteLine($"Досье удалено.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка! Досье с таким номером нет в базе.");
+                    }
+
+                    break;
+
+                case CommandFindBySurname:
+                    Console.WriteLine("Введите фамилию для поиска досье");
+                    string surname = Console.ReadLine();
+                    FindBySurname(names, jobTitles, ref surname);
+                    break;
+
+                case CommandExit:
+                    isExitChoosen = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Такой комманды не существует.");
+                    break;
+            }
+        }
+    }
+
+    private static string[] AddData(string[] array, string userData)
+    {
+        string[] tempArray = new string[array.Length + 1];
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            tempArray[i] = array[i];
+        }
+
+        tempArray[tempArray.Length - 1] = userData;
+        array = tempArray;
+        return array;
+    }
+
+    private static void ShowAllData(ref int positionAtList, string[] jobTitles, string[] names)
+    {
+        positionAtList = 1;
+
+        for (int i = 0; i < jobTitles.Length; i++)
+        {
+            Console.WriteLine($"{positionAtList}. {names[i]} - {jobTitles[i]}");
+            positionAtList++;
+        }
+    }
+
+    private static string[] DeleteData(string[] array, ref int positionAtList)
+    {
+        string[] tempArray = new string[array.Length - 1];
+
+        for (int i = 0; i < positionAtList - 1; i++)
+        {
+            tempArray[i] = array[i];
+        }
+
+        for (int i = positionAtList - 1; i < array.Length - 1; i++)
+        {
+            tempArray[i] = array[i + 1];
+        }
+
+        array = tempArray;
+        return array;
+    }
+
+    private static void FindBySurname(string[] names, string[] jobTitles, ref string surname)
+    {
+
+        for (int i = 0; i < names.Length; i++)
+        {
+            string[] surnames = names[i].Split();
+
+            if (surnames[0] == surname)
+            {
+                
+                Console.WriteLine($"{i+1}. {names[i]} - {jobTitles[i]}");
+            }
+        }
+    }
+}
