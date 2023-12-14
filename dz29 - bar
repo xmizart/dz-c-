@@ -1,0 +1,38 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int health = 5;
+        int maxHealth = 10;
+        DrawBar(health, maxHealth, ConsoleColor.Green, 3);
+    }
+
+    static void DrawBar(int value, int maxValue, ConsoleColor color, int position)
+    {
+        ConsoleColor defaultColor = Console.BackgroundColor;
+        string bar = "";
+
+        for (int i = 0; i < value; i++)
+        {
+            bar += " ";
+        }
+
+        Console.SetCursorPosition(0, position);
+        Console.Write('[');
+        Console.BackgroundColor = color;
+        Console.Write(bar);
+        Console.BackgroundColor = defaultColor;
+
+        bar = "";
+
+        for (int i = value; i < maxValue; i++)
+        {
+            bar += " ";
+        }
+
+        Console.Write(bar + "]");
+        Console.ReadKey();
+    }
+}
