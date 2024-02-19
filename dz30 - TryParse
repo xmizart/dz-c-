@@ -4,11 +4,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int result = ParseNumber();
+        int result = ReadInt();
         Console.ReadKey();
     }
 
-    static int ParseNumber()
+    static int ReadInt()
     {
         int result = 0;
         string input;
