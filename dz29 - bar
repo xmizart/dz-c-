@@ -4,17 +4,18 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int health = 5;
-        int maxHealth = 10;
-        DrawBar(health, maxHealth, ConsoleColor.Green, 3);
+        int healthPercent = 75;
+        int maxHealth = 20;
+        DrawBar(healthPercent, maxHealth, ConsoleColor.Green, 3);
     }
 
-    static void DrawBar(int value, int maxValue, ConsoleColor color, int position)
+    static void DrawBar(int percent, int maxValue, ConsoleColor color, int position)
     {
         ConsoleColor defaultColor = Console.BackgroundColor;
         string bar = "";
+        int currentBar = maxValue * percent / 100;
 
-        for (int i = 0; i < value; i++)
+        for (int i = 0; i < currentBar; i++)
         {
             bar += " ";
         }
@@ -27,7 +28,7 @@ internal class Program
 
         bar = "";
 
-        for (int i = value; i < maxValue; i++)
+        for (int i = currentBar; i < maxValue; i++)
         {
             bar += " ";
         }
