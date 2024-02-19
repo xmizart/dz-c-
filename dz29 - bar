@@ -11,29 +11,43 @@ internal class Program
 
     static void DrawBar(int percent, int maxValue, ConsoleColor color, int position)
     {
-        ConsoleColor defaultColor = Console.BackgroundColor;
+        const int MaxPercent = 100;
+
         string bar = "";
-        int currentBar = maxValue * percent / 100;
+        string startSymbol = "[";
+        string finishSymbol = "]";
 
-        for (int i = 0; i < currentBar; i++)
+        int currentBar = maxValue * percent / MaxPercent;
+
+        ConsoleColor defaultColor = Console.BackgroundColor;
+
+        if (percent >= 0 && percent <= 100)
         {
-            bar += " ";
+            for (int i = 0; i < currentBar; i++)
+            {
+                bar += " ";
+            }
+
+            Console.SetCursorPosition(0, position);
+            Console.Write(startSymbol);
+            Console.BackgroundColor = color;
+            Console.Write(bar);
+            Console.BackgroundColor = defaultColor;
+
+            bar = "";
+
+            for (int i = currentBar; i < maxValue; i++)
+            {
+                bar += " ";
+            }
+
+            Console.Write(bar + finishSymbol);
+        }
+        else
+        {
+            Console.Write("Отрицательное значение не может быть отображено");
         }
 
-        Console.SetCursorPosition(0, position);
-        Console.Write('[');
-        Console.BackgroundColor = color;
-        Console.Write(bar);
-        Console.BackgroundColor = defaultColor;
-
-        bar = "";
-
-        for (int i = currentBar; i < maxValue; i++)
-        {
-            bar += " ";
-        }
-
-        Console.Write(bar + "]");
         Console.ReadKey();
     }
 }
