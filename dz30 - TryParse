@@ -11,19 +11,18 @@ internal class Program
     static int ParseNumber()
     {
         int result = 0;
+        string input;
         bool isNumberParsed = false;
 
         while (isNumberParsed == false)
         {
             Console.WriteLine("Введите число: ");
-
-            string input = Console.ReadLine();
+            input = Console.ReadLine();
 
             if (int.TryParse(input, out result))
             {
                 Console.WriteLine("Удалось преобразовать число: " + result);
                 isNumberParsed = true;
-
             }
             else
             {
