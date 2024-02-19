@@ -1,0 +1,36 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int result = ParseNumber();
+        Console.ReadKey();
+    }
+
+    static int ParseNumber()
+    {
+        int result = 0;
+        bool isNumberParsed = false;
+
+        while (isNumberParsed == false)
+        {
+            Console.WriteLine("Введите число: ");
+
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out result))
+            {
+                Console.WriteLine("Удалось преобразовать число: " + result);
+                isNumberParsed = true;
+
+            }
+            else
+            {
+                Console.WriteLine("Невозможно преобразовать введенные символы.");
+            }
+        }
+
+        return result;
+    }
+}
