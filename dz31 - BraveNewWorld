@@ -1,0 +1,73 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.CursorVisible = false;
+
+        int unitPositionX = 1;
+        int unitPositionY = 1;
+      
+        char[,] map = new char[,]
+        {
+                {'#','#','#','#','#','#','#','#','#','#','#','#'},
+                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ','#'},
+                {'#','#','#','#','#','#',' ',' ',' ','#',' ','#'},
+                {'#',' ',' ',' ',' ',' ','#','#','#','#',' ','#'},
+                {'#',' ','#','#','#',' ',' ',' ',' ','#',' ','#'},
+                {'#',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#'},
+                {'#','#','#','#','#','#','#','#','#','#','#','#'}
+         };
+
+        while (true)
+        {
+            Console.Clear();
+            DrawMap(map);
+            Console.SetCursorPosition(unitPositionY, unitPositionX);
+            Console.Write("@");
+            ConsoleKeyInfo pressedKey = Console.ReadKey();
+            HandleInput(pressedKey, ref unitPositionX, ref unitPositionY, map);
+        }
+    }
+
+    static void DrawMap(char[,] map)
+    {
+        for (int x = 0; x < map.GetLength(0); x++)
+        {
+            for (int y = 0; y < map.GetLength(1); y++)
+            {
+                Console.Write(map[x, y]);
+            }
+
+            Console.WriteLine();
+        }
+    }
+
+    static void HandleInput(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map)
+    {
+        int[] direction = GetDirection(pressedKey);
+        int nextUnitPosistionX = unitPositionX + direction[0];
+        int nextUnitPosistionY = unitPositionY + direction[1];
+
+        if (map[nextUnitPosistionX, nextUnitPosistionY] != '#')
+        {
+            unitPositionX = nextUnitPosistionX;
+            unitPositionY = nextUnitPosistionY;
+        }
+    }
+
+    static int[] GetDirection(ConsoleKeyInfo pressedKey)
+    {
+        int[] direction = { 0, 0 };
+
+        if (pressedKey.Key == ConsoleKey.UpArrow)
+            direction[0] = -1;
+        else if (pressedKey.Key == ConsoleKey.DownArrow)
+            direction[0] = 1;
+        else if (pressedKey.Key == ConsoleKey.LeftArrow)
+            direction[1] = -1;
+        else if (pressedKey.Key == ConsoleKey.RightArrow)
+            direction[1] = 1;
+
+        return direction;
+    }
+}
