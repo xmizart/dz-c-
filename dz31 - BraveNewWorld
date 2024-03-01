@@ -6,7 +6,9 @@ internal class Program
 
         int unitPositionX = 1;
         int unitPositionY = 1;
-      
+
+        bool isExitChosen = false;
+
         char[,] map = new char[,]
         {
                 {'#','#','#','#','#','#','#','#','#','#','#','#'},
@@ -18,14 +20,14 @@ internal class Program
                 {'#','#','#','#','#','#','#','#','#','#','#','#'}
          };
 
-        while (true)
+        while (isExitChosen == false)
         {
             Console.Clear();
             DrawMap(map);
             Console.SetCursorPosition(unitPositionY, unitPositionX);
             Console.Write("@");
             ConsoleKeyInfo pressedKey = Console.ReadKey();
-            HandleInput(pressedKey, ref unitPositionX, ref unitPositionY, map);
+            HandleInput(pressedKey, ref unitPositionX, ref unitPositionY, map, ref isExitChosen);
         }
     }
 
@@ -42,9 +44,9 @@ internal class Program
         }
     }
 
-    static void HandleInput(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map)
+    static void HandleInput(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map, ref bool isExitChosen)
     {
-        int[] direction = GetDirection(pressedKey);
+        int[] direction = GetDirection(pressedKey, ref isExitChosen);
         int nextUnitPosistionX = unitPositionX + direction[0];
         int nextUnitPosistionY = unitPositionY + direction[1];
 
@@ -55,18 +57,25 @@ internal class Program
         }
     }
 
-    static int[] GetDirection(ConsoleKeyInfo pressedKey)
+    static int[] GetDirection(ConsoleKeyInfo pressedKey, ref bool isExitChosen)
     {
         int[] direction = { 0, 0 };
+        ConsoleKey moveUp = ConsoleKey.UpArrow;
+        ConsoleKey moveDown = ConsoleKey.DownArrow;
+        ConsoleKey moveLeft = ConsoleKey.LeftArrow;
+        ConsoleKey moveRight = ConsoleKey.RightArrow;
+        ConsoleKey exit = ConsoleKey.Escape;
 
-        if (pressedKey.Key == ConsoleKey.UpArrow)
+        if (pressedKey.Key == moveUp)
             direction[0] = -1;
-        else if (pressedKey.Key == ConsoleKey.DownArrow)
+        else if (pressedKey.Key == moveDown)
             direction[0] = 1;
-        else if (pressedKey.Key == ConsoleKey.LeftArrow)
+        else if (pressedKey.Key == moveLeft)
             direction[1] = -1;
-        else if (pressedKey.Key == ConsoleKey.RightArrow)
+        else if (pressedKey.Key == moveRight)
             direction[1] = 1;
+        else if (pressedKey.Key == exit)
+            isExitChosen = true;
 
         return direction;
     }
