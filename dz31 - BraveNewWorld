@@ -4,7 +4,7 @@ internal class Program
     {
         Console.CursorVisible = false;
 
-        ConsoleKey exit = ConsoleKey.Escape;
+        ConsoleKey exitButton = ConsoleKey.Escape;
 
         int unitPositionX = 1;
         int unitPositionY = 1;
@@ -15,6 +15,7 @@ internal class Program
         bool isExitChosen = false;
 
         char[,] map = new char[,]
+
         {
                 {wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall},
                 {wall,' ',' ',' ',' ',' ',' ',wall,' ',' ',' ',wall},
@@ -29,17 +30,17 @@ internal class Program
         {
             Console.Clear();
             DrawMap(map);
-            DrawUser(unitPositionY, unitPositionX, unitSymbol);
+            DrawUnit(unitPositionY, unitPositionX, unitSymbol);
             ConsoleKeyInfo pressedKey = Console.ReadKey();
 
-            if (pressedKey.Key == exit)
+            if (pressedKey.Key == exitButton)
                 isExitChosen = true;
 
-            MoveUser(pressedKey, ref unitPositionX, ref unitPositionY, map, wall);
+            TryMoveUnit(pressedKey, ref unitPositionX, ref unitPositionY, map, wall);
         }
     }
 
-    static void DrawUser(int unitPositionY,int unitPositionX, char unitSymbol)
+    static void DrawUnit(int unitPositionY,int unitPositionX, char unitSymbol)
     {
         Console.SetCursorPosition(unitPositionY, unitPositionX);
         Console.Write(unitSymbol);
@@ -58,7 +59,7 @@ internal class Program
         }
     }
 
-    static void MoveUser(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map, char wall)
+    static void TryMoveUnit(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map, char wall)
     {
         int[] direction = GetDirection(pressedKey);
         int nextUnitPosistionX = unitPositionX + direction[0];
@@ -74,18 +75,18 @@ internal class Program
     static int[] GetDirection(ConsoleKeyInfo pressedKey)
     {
         int[] direction = { 0, 0 };
-        ConsoleKey moveUp = ConsoleKey.UpArrow;
-        ConsoleKey moveDown = ConsoleKey.DownArrow;
-        ConsoleKey moveLeft = ConsoleKey.LeftArrow;
-        ConsoleKey moveRight = ConsoleKey.RightArrow;
+        ConsoleKey moveUpButton = ConsoleKey.UpArrow;
+        ConsoleKey moveDownButton = ConsoleKey.DownArrow;
+        ConsoleKey moveLeftButton = ConsoleKey.LeftArrow;
+        ConsoleKey moveRightButton = ConsoleKey.RightArrow;
 
-        if (pressedKey.Key == moveUp)
+        if (pressedKey.Key == moveUpButton)
             direction[0] = -1;
-        else if (pressedKey.Key == moveDown)
+        else if (pressedKey.Key == moveDownButton)
             direction[0] = 1;
-        else if (pressedKey.Key == moveLeft)
+        else if (pressedKey.Key == moveLeftButton)
             direction[1] = -1;
-        else if (pressedKey.Key == moveRight)
+        else if (pressedKey.Key == moveRightButton)
             direction[1] = 1;
 
         return direction;
