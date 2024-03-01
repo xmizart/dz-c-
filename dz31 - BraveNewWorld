@@ -4,31 +4,45 @@ internal class Program
     {
         Console.CursorVisible = false;
 
+        ConsoleKey exit = ConsoleKey.Escape;
+
         int unitPositionX = 1;
         int unitPositionY = 1;
+
+        char unitSymbol = '@';
+        char wall = '#';
 
         bool isExitChosen = false;
 
         char[,] map = new char[,]
         {
-                {'#','#','#','#','#','#','#','#','#','#','#','#'},
-                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ','#'},
-                {'#','#','#','#','#','#',' ',' ',' ','#',' ','#'},
-                {'#',' ',' ',' ',' ',' ','#','#','#','#',' ','#'},
-                {'#',' ','#','#','#',' ',' ',' ',' ','#',' ','#'},
-                {'#',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#'},
-                {'#','#','#','#','#','#','#','#','#','#','#','#'}
+                {wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall},
+                {wall,' ',' ',' ',' ',' ',' ',wall,' ',' ',' ',wall},
+                {wall,wall,wall,wall,wall,wall,' ',' ',' ',wall,' ',wall},
+                {wall,' ',' ',' ',' ',' ',wall,wall,wall,wall,' ',wall},
+                {wall,' ',wall,wall,wall,' ',' ',' ',' ',wall,' ',wall},
+                {wall,' ',' ',' ',wall,' ',' ',' ',' ',' ',' ',wall},
+                {wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall}
          };
 
         while (isExitChosen == false)
         {
             Console.Clear();
             DrawMap(map);
-            Console.SetCursorPosition(unitPositionY, unitPositionX);
-            Console.Write("@");
+            DrawUser(unitPositionY, unitPositionX, unitSymbol);
             ConsoleKeyInfo pressedKey = Console.ReadKey();
-            HandleInput(pressedKey, ref unitPositionX, ref unitPositionY, map, ref isExitChosen);
+
+            if (pressedKey.Key == exit)
+                isExitChosen = true;
+
+            MoveUser(pressedKey, ref unitPositionX, ref unitPositionY, map, wall);
         }
+    }
+
+    static void DrawUser(int unitPositionY,int unitPositionX, char unitSymbol)
+    {
+        Console.SetCursorPosition(unitPositionY, unitPositionX);
+        Console.Write(unitSymbol);
     }
 
     static void DrawMap(char[,] map)
@@ -44,27 +58,26 @@ internal class Program
         }
     }
 
-    static void HandleInput(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map, ref bool isExitChosen)
+    static void MoveUser(ConsoleKeyInfo pressedKey, ref int unitPositionX, ref int unitPositionY, char[,] map, char wall)
     {
-        int[] direction = GetDirection(pressedKey, ref isExitChosen);
+        int[] direction = GetDirection(pressedKey);
         int nextUnitPosistionX = unitPositionX + direction[0];
         int nextUnitPosistionY = unitPositionY + direction[1];
 
-        if (map[nextUnitPosistionX, nextUnitPosistionY] != '#')
+        if (map[nextUnitPosistionX, nextUnitPosistionY] != wall)
         {
             unitPositionX = nextUnitPosistionX;
             unitPositionY = nextUnitPosistionY;
         }
     }
 
-    static int[] GetDirection(ConsoleKeyInfo pressedKey, ref bool isExitChosen)
+    static int[] GetDirection(ConsoleKeyInfo pressedKey)
     {
         int[] direction = { 0, 0 };
         ConsoleKey moveUp = ConsoleKey.UpArrow;
         ConsoleKey moveDown = ConsoleKey.DownArrow;
         ConsoleKey moveLeft = ConsoleKey.LeftArrow;
         ConsoleKey moveRight = ConsoleKey.RightArrow;
-        ConsoleKey exit = ConsoleKey.Escape;
 
         if (pressedKey.Key == moveUp)
             direction[0] = -1;
@@ -74,8 +87,6 @@ internal class Program
             direction[1] = -1;
         else if (pressedKey.Key == moveRight)
             direction[1] = 1;
-        else if (pressedKey.Key == exit)
-            isExitChosen = true;
 
         return direction;
     }
