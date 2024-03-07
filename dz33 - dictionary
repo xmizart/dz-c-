@@ -1,0 +1,31 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Dictionary<string, string> slovoDna = new Dictionary<string, string>();
+        slovoDna.Add("БДСМ", "Боже, Дай Сил и Мозгов.");
+        slovoDna.Add("Бесцеллер", "Человек, у которого нет целей в жизни, есть только путь.");
+        slovoDna.Add("Дизайка", "Дизайнер, который всё понимает с первого раза");
+        slovoDna.Add("Душка", "Милый, но немного душный человек");
+        slovoDna.Add("Каллека", "Коллега, который задает на собрании тупой вопрос и продлевает этим собрание на час.");
+
+        string userInput;
+        string exitWord = "exit";
+        bool isExitChosen = false;
+
+        while (isExitChosen == false)
+        {
+            Console.WriteLine($"Введите СловоДна для вывода определения или {exitWord} для выхода из программы.");
+
+            userInput = Console.ReadLine();
+
+            if (userInput == exitWord)
+                isExitChosen = true;
+
+            if (slovoDna.ContainsKey(userInput))
+                Console.WriteLine($"{userInput} - {slovoDna[userInput]}");
+            else
+                Console.WriteLine("CловоДна не найдено.");
+        }
+    }
+}
