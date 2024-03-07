@@ -11,6 +11,7 @@ internal class Program
 
         string userInput;
         string exitWord = "exit";
+
         bool isExitChosen = false;
 
         while (isExitChosen == false)
