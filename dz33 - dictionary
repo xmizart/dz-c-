@@ -2,12 +2,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Dictionary<string, string> slovoDna = new Dictionary<string, string>();
-        slovoDna.Add("БДСМ", "Боже, Дай Сил и Мозгов.");
-        slovoDna.Add("Бесцеллер", "Человек, у которого нет целей в жизни, есть только путь.");
-        slovoDna.Add("Дизайка", "Дизайнер, который всё понимает с первого раза");
-        slovoDna.Add("Душка", "Милый, но немного душный человек");
-        slovoDna.Add("Каллека", "Коллега, который задает на собрании тупой вопрос и продлевает этим собрание на час.");
+        Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        dictionary.Add("БДСМ", "Боже, Дай Сил и Мозгов.");
+        dictionary.Add("Бесцеллер", "Человек, у которого нет целей в жизни, есть только путь.");
+        dictionary.Add("Дизайка", "Дизайнер, который всё понимает с первого раза");
+        dictionary.Add("Душка", "Милый, но немного душный человек");
+        dictionary.Add("Каллека", "Коллега, который задает на собрании тупой вопрос и продлевает этим собрание на час.");
 
         string userInput;
         string exitWord = "exit";
@@ -23,8 +23,8 @@ internal class Program
             if (userInput == exitWord)
                 isExitChosen = true;
 
-            if (slovoDna.ContainsKey(userInput))
-                Console.WriteLine($"{userInput} - {slovoDna[userInput]}");
+            if (dictionary.ContainsKey(userInput))
+                Console.WriteLine($"{userInput} - {dictionary[userInput]}");
             else
                 Console.WriteLine("CловоДна не найдено.");
         }
