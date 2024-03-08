@@ -22,8 +22,7 @@ internal class Program
 
             if (userInput == exitWord)
                 isExitChosen = true;
-
-            if (dictionary.ContainsKey(userInput))
+            else if (dictionary.ContainsKey(userInput))
                 Console.WriteLine($"{userInput} - {dictionary[userInput]}");
             else
                 Console.WriteLine("CловоДна не найдено.");
