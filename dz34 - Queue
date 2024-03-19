@@ -7,30 +7,28 @@ internal class Program
 
         Queue<int> clients = new Queue<int>();
 
-        AddClientsToQueue(ref clients, ref clientsCount);
+        AddClientsToQueue( clients, clientsCount);
 
         Console.WriteLine($"Привет! Количество клиентов в очереди: {clientsCount}. Нажми любую клавишу для продолжения.");
         Console.ReadKey();
 
-        WorkWithClients(ref clients, ref totalCash);
+        WorkWithClients(clients, totalCash);
     }
 
-    static void AddClientsToQueue(ref Queue<int> clients, ref int clientsCount)
+    static void AddClientsToQueue( Queue<int> clients, int clientsCount)
     {
         Random random = new Random();
 
         int maxClientCash = 300;
         int minClientCash = 10;
-        int tmp;
 
         for (int i = 0; i < clientsCount; i++)
         {
-            tmp = random.Next(minClientCash, maxClientCash);
-            clients.Enqueue(tmp);
+            clients.Enqueue(random.Next(minClientCash, maxClientCash));
         }
     }
 
-    static void WorkWithClients(ref Queue<int> clients, ref int totalCash)
+    static void WorkWithClients(Queue<int> clients, int totalCash)
     {
         while (clients.Count > 0)
         {
