@@ -4,11 +4,14 @@ internal class Program
     {
         int totalCash = 0;
         int clientsCount = 5;
+
         Queue<int> clients = new Queue<int>();
 
         AddClientsToQueue(ref clients, ref clientsCount);
+
         Console.WriteLine($"Привет! Количество клиентов в очереди: {clientsCount}. Нажми любую клавишу для продолжения.");
         Console.ReadKey();
+
         WorkWithClients(ref clients, ref totalCash);
     }
 
@@ -36,7 +39,6 @@ internal class Program
             Console.WriteLine($"Мы обслужили клиента! Количество рублей в кассе: {totalCash}. Нажми любую клавишу для продолжения.");
             Console.ReadKey();
             Console.Clear();
-
         }
     }
 }
