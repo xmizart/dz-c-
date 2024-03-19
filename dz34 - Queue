@@ -7,7 +7,7 @@ internal class Program
 
         Queue<int> clients = new Queue<int>();
 
-        AddClientsToQueue( clients, clientsCount);
+        AddClientsToQueue(clients, clientsCount);
 
         Console.WriteLine($"Привет! Количество клиентов в очереди: {clientsCount}. Нажми любую клавишу для продолжения.");
         Console.ReadKey();
@@ -15,7 +15,7 @@ internal class Program
         WorkWithClients(clients, totalCash);
     }
 
-    static void AddClientsToQueue( Queue<int> clients, int clientsCount)
+    static void AddClientsToQueue(Queue<int> clients, int clientsCount)
     {
         Random random = new Random();
 
