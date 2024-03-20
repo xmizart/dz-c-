@@ -1,0 +1,102 @@
+using System;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        const string CommandAddData = "1";
+        const string CommandShowAllData = "2";
+        const string CommandDeleteData = "3";
+        const string CommandExit = "4";
+
+        string desiredCommand;
+
+        List<string> names = new List<string>();
+        List<string> jobTitles = new List<string>();
+
+        bool isExitChoosen = false;
+
+        while (isExitChoosen == false)
+        {
+
+            Console.WriteLine("Выберете желаемое действие");
+            Console.WriteLine($"{CommandAddData} - Добавить досье");
+            Console.WriteLine($"{CommandShowAllData} - Показать все имеющиеся досье");
+            Console.WriteLine($"{CommandDeleteData} - Удалить досье");
+            Console.WriteLine($"{CommandExit} - выйти");
+
+            Console.Write("Ваш выбор: ");
+            desiredCommand = Console.ReadLine();
+
+            switch (desiredCommand)
+            {
+                case CommandAddData:
+                    AddData(names, jobTitles);
+                    break;
+
+                case CommandShowAllData:
+                    ShowAllData(jobTitles, names);
+                    break;
+
+                case CommandDeleteData:
+                    DeleteData(names, jobTitles);
+                    break;
+
+                case CommandExit:
+                    isExitChoosen = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Такой комманды не существует.");
+                    break;
+            }
+        }
+    }
+
+    private static void AddData(List<string> names, List<string> jobTitles)
+    {
+        Console.WriteLine("Введите ФИО сотрудника");
+        names.Add(Console.ReadLine());
+
+        Console.WriteLine("Введите должность сотрудника");
+        jobTitles.Add(Console.ReadLine());
+    }
+
+    private static void ShowAllData(List<string> names, List<string> jobTitles)
+    {
+        for (int i = 0; i < jobTitles.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {names[i]} - {jobTitles[i]}");
+        }
+    }
+
+    private static void DeleteData(List<string> names, List<string> jobTitles)
+    {
+        Console.Write("Введите номер досье :");
+        string userEnteredData = Console.ReadLine();
+      
+        int positionToDelete;
+      
+        bool isNumber = int.TryParse(userEnteredData, out int numericValue);
+
+        if (isNumber)
+        {
+            positionToDelete = numericValue - 1;
+
+            if (positionToDelete >= 0 && positionToDelete < names.Count)
+            {
+                names.RemoveAt(positionToDelete);
+                jobTitles.RemoveAt(positionToDelete);
+                Console.WriteLine($"Досье удалено.");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка! Досье с таким номером нет в базе.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Ошибка! Введенный символ не является номером досье.");
+        }
+    }
+}
