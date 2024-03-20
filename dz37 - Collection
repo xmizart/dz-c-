@@ -1,0 +1,37 @@
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        string[] sourceArray1 = { "1", "2", "1" };
+        string[] sourceArray2 = { "3", "2", "4", "5" };
+
+        List<string> collection = new List<string>();
+
+        AddElementsToCollection(sourceArray1, collection);
+        AddElementsToCollection(sourceArray2, collection);
+        ShowCollection(collection);
+
+        Console.ReadKey();
+    }
+
+    static void ShowCollection(List<string> collection)
+    {
+        Console.Write("Итоговая коллекция:");
+
+        for (int i = 0; i < collection.Count; i++)
+        {
+            Console.Write($" {collection[i]}");
+        }
+    }
+
+    static void AddElementsToCollection(string[] array, List<string> collection)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (collection.Contains(array[i]) == false)
+            {
+                collection.Add(array[i]);
+            }
+        }
+    }
+}
