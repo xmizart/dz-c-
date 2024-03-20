@@ -25,7 +25,7 @@ internal class Program
             }
             else
             {
-                numbers.Add(Convert.ToInt32(userEnteredData));
+                AddNumber(numbers, userEnteredData);
             }
         }
     }
@@ -40,5 +40,19 @@ internal class Program
         }
 
         Console.WriteLine($"Сумма введенных чисел: {sum} ");
+    }
+
+    static void AddNumber(List<int> numbers, string userEnteredData)
+    {
+        bool isNumber = int.TryParse(userEnteredData, out int numericValue);
+
+        if (isNumber)
+        {
+            numbers.Add(numericValue);
+        }
+        else
+        {
+            Console.WriteLine("Введите число или существующую команду.");
+        }
     }
 }
